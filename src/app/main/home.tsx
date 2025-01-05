@@ -6,8 +6,15 @@ export default function Home() {
     <>
       <SafeAreaView className="flex-1">
         <ScrollView className="overflow-visible px-6 pt-4">
-          <View className="bg-blue-700 rounded-full w-[1000px] h-[1000px] absolute -top-[850px] -left-[325px]" />
-          <Text className="text-white text-3xl font-semibold">Home</Text>
+          <View className="absolute -left-6 -top-40 h-80 w-screen bg-blue-700" />
+
+          <View className="flex-row items-center justify-between">
+            <Text className="text-3xl font-semibold text-white">Home</Text>
+
+            <View className="flex-row items-center gap-2">
+              <Text>Hello</Text>
+            </View>
+          </View>
         </ScrollView>
       </SafeAreaView>
     </>

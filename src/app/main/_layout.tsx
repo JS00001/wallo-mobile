@@ -1,14 +1,31 @@
 import { Tabs } from "expo-router";
 import { BlurView } from "expo-blur";
+import colors from "tailwindcss/colors";
 import { StyleSheet } from "react-native";
+
+import Icon from "@/ui/Icon";
+import Text from "@/ui/Text";
 
 export default function Layout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: colors.blue[700],
+        tabBarInactiveTintColor: colors.gray[500],
+        tabBarItemStyle: {
+          marginTop: 16,
+        },
         tabBarStyle: {
           position: "absolute",
+          height: 90,
+        },
+        tabBarLabel: ({ color, children }) => {
+          return (
+            <Text style={{ color }} className="text-xs">
+              {children}
+            </Text>
+          );
         },
         tabBarBackground: () => (
           <BlurView
@@ -24,25 +41,65 @@ export default function Layout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: "home",
+          title: "Home",
+          tabBarIcon: ({ color }) => {
+            return (
+              <Icon
+                className="mb-2"
+                size={32}
+                color={color}
+                icon="Solar.HomeDuotone"
+              />
+            );
+          },
         }}
       />
       <Tabs.Screen
         name="learn"
         options={{
-          title: "learn",
+          title: "Learn",
+          tabBarIcon: ({ color }) => {
+            return (
+              <Icon
+                className="mb-2"
+                size={32}
+                color={color}
+                icon="Solar.BookDuotone"
+              />
+            );
+          },
         }}
       />
       <Tabs.Screen
         name="shop"
         options={{
-          title: "shop",
+          title: "Shop",
+          tabBarIcon: ({ color }) => {
+            return (
+              <Icon
+                className="mb-2"
+                size={32}
+                color={color}
+                icon="Solar.ShopDuotone"
+              />
+            );
+          },
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: "profile",
+          title: "Profile",
+          tabBarIcon: ({ color }) => {
+            return (
+              <Icon
+                className="mb-2"
+                size={32}
+                color={color}
+                icon="Solar.UserDuotone"
+              />
+            );
+          },
         }}
       />
     </Tabs>
