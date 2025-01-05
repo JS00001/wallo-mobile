@@ -12,13 +12,21 @@ interface Props {
 export default function StreakCard({ size, weekData }: Props) {
   const DAYS_OF_WEEK = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
+  const containerClasses = classNames(
+    "gap-y-3 rounded-xl bg-green-50 p-5",
+    "border border-green-700",
+  );
+
   return (
-    <View className="gap-y-3 rounded-xl border border-green-700 bg-green-50 p-5">
+    <View
+      className={containerClasses}
+      style={{ boxShadow: "0px 3px 0px rgb(21, 128, 61)" }}
+    >
       <View>
-        <Text className="text-lg font-medium text-green-700">
+        <Text size="lg" className="font-medium text-green-700">
           {size}-day Streak
         </Text>
-        <Text className="text-base text-gray-600">
+        <Text size="sm" className="text-green-700">
           Come back every day this week to earn 200 gems
         </Text>
       </View>
@@ -29,7 +37,7 @@ export default function StreakCard({ size, weekData }: Props) {
           const isToday = i === new Date().getDay();
 
           const containerClasses = classNames(
-            "items-center gap-1 p-1.5 rounded-lg",
+            "items-center gap-1 p-1.5 rounded-xl",
             isToday && "bg-green-700",
           );
 
@@ -44,7 +52,6 @@ export default function StreakCard({ size, weekData }: Props) {
           );
 
           const textClasses = classNames(
-            "text-xs",
             isToday ? "text-white" : "text-green-700",
           );
 
@@ -53,7 +60,9 @@ export default function StreakCard({ size, weekData }: Props) {
               <View className={iconContainerClasses}>
                 {hasStreak && <Icon icon="Wallo.Flame" size={20} />}
               </View>
-              <Text className={textClasses}>{day}</Text>
+              <Text size="xs" className={textClasses}>
+                {day}
+              </Text>
             </View>
           );
         })}

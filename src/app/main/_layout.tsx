@@ -22,7 +22,7 @@ export default function Layout() {
         },
         tabBarLabel: ({ color, children }) => {
           return (
-            <Text style={{ color }} className="text-xs">
+            <Text size="xs" style={{ color }}>
               {children}
             </Text>
           );

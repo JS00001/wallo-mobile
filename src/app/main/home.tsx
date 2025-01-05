@@ -17,7 +17,9 @@ export default function Home() {
 
           {/* Header */}
           <View className="flex-row items-center justify-between">
-            <Text className="text-4xl font-semibold text-white">Home</Text>
+            <Text size="4xl" className="font-semibold text-white">
+              Home
+            </Text>
 
             <View className="flex-row items-center gap-2">
               <Streak count={20} />
