@@ -10,7 +10,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   return (
     <SplashScreenProvider>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </SplashScreenProvider>
   );
 }

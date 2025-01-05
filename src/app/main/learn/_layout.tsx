@@ -4,9 +4,9 @@ interface LayoutProps {}
 
 const Layout: React.FC<LayoutProps> = () => {
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" />
-      <Stack.Screen name="[module]/index" />
+      <Stack.Screen name="[module]/home" />
       <Stack.Screen name="[module]/lesson" />
       <Stack.Screen name="[module]/quiz" />
     </Stack>
