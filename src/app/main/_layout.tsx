@@ -20,6 +20,9 @@ export default function Layout() {
           position: "absolute",
           height: 90,
         },
+        sceneStyle: {
+          backgroundColor: "white",
+        },
         tabBarLabel: ({ color, children }) => {
           return (
             <Text size="xs" style={{ color }}>

@@ -26,7 +26,7 @@ export default function ProgressBar({
   };
 
   return (
-    <View className="flex-row items-center gap-2">
+    <View className="max-w-full flex-row items-center gap-2">
       {/* Bar */}
       <View className="h-4 w-full shrink rounded-full bg-gray-200">
         <View style={barStyles} className="h-full rounded-full px-2">
@@ -37,7 +37,10 @@ export default function ProgressBar({
       {/* Label */}
       {!hideLabel && (
         <Text size="sm" className="font-medium text-gray-400">
-          <Text style={labelStyles}>{progress}</Text> / {total}
+          <Text size="sm" style={labelStyles}>
+            {progress}
+          </Text>{" "}
+          / {total}
         </Text>
       )}
     </View>

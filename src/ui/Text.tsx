@@ -1,28 +1,33 @@
 import classNames from "classnames";
 import { Text as RNText, TextProps as RNTextProps } from "react-native";
 
-interface TextProps extends RNTextProps {
+interface TextProps extends Omit<RNTextProps, "numberOfLines"> {
+  lines?: number;
   size?: keyof typeof SizeClasses;
 }
 
 const SizeClasses = {
-  xs: "text-xs leading-[16px]",
-  sm: "text-sm leading-[20px]",
-  base: "text-base leading-[24px]",
-  lg: "text-lg leading-[28px]",
-  xl: "text-xl leading-[32px]",
-  "2xl": "text-2xl leading-[36px]",
-  "3xl": "text-3xl leading-[40px]",
-  "4xl": "text-4xl leading-[44px]",
-  "5xl": "text-5xl leading-[48px]",
-  "6xl": "text-6xl leading-[52px]",
-  "7xl": "text-7xl leading-[56px]",
+  xs: "text-[12px] leading-[16px]",
+  sm: "text-[14px] leading-[20px]",
+  base: "text-[16px] leading-[24px]",
+  lg: "text-[18px] leading-[28px]",
+  xl: "text-[20px] leading-[28px]",
+  "2xl": "text-[24px] leading-[32px]",
+  "3xl": "text-[30px] leading-[36px]",
+  "4xl": "text-[36px] leading-[40px]",
+  "5xl": "text-[48px]",
+  "6xl": "text-[64px]",
 };
 
-const Text: React.FC<TextProps> = ({ className, size = "base", ...props }) => {
-  const textClasses = classNames(SizeClasses[size], className);
+const Text: React.FC<TextProps> = ({
+  lines,
+  className,
+  size = "base",
+  ...props
+}) => {
+  const textClasses = classNames("font-sans", SizeClasses[size], className);
 
-  return <RNText className={textClasses} {...props} />;
+  return <RNText numberOfLines={lines} className={textClasses} {...props} />;
 };
 
 export default Text;

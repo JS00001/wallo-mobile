@@ -29,7 +29,9 @@ export default function Gems({ count }: Props) {
   return (
     <TouchableOpacity className={containerClasses} onPress={onPress}>
       <Icon icon="Wallo.Gem" size={20} />
-      <Text className="text-white">{formattedCount}</Text>
+      <Text size="sm" className="text-white">
+        {formattedCount}
+      </Text>
     </TouchableOpacity>
   );
 }

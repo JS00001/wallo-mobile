@@ -19,7 +19,9 @@ export default function Streak({ count }: Props) {
   return (
     <TouchableOpacity className={containerClasses} onPress={onPress}>
       <Icon icon="Wallo.Flame" size={20} />
-      <Text className="text-white">{count}</Text>
+      <Text size="sm" className="text-white">
+        {count}
+      </Text>
     </TouchableOpacity>
   );
 }

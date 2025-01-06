@@ -19,7 +19,9 @@ export default function Lives({ count }: Props) {
   return (
     <TouchableOpacity className={containerClasses} onPress={onPress}>
       <Icon icon="Wallo.Heart" size={20} />
-      <Text className="text-white">{count}</Text>
+      <Text size="sm" className="text-white">
+        {count}
+      </Text>
     </TouchableOpacity>
   );
 }
