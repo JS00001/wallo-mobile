@@ -11,6 +11,7 @@ export type IconType =
   | `Solar.${keyof typeof Solar}`;
 
 export const Wallo = {
+  Book: require('./wallo-icons/Book').default,
   Checkmark: require('./wallo-icons/Checkmark').default,
   Flame: require('./wallo-icons/Flame').default,
   Gem: require('./wallo-icons/Gem').default,

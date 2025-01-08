@@ -4,11 +4,9 @@ import { TouchableOpacity } from "react-native";
 import Icon from "@/ui/Icon";
 import Text from "@/ui/Text";
 
-interface Props {
-  count: number;
-}
+export default function StreakCount() {
+  const count = 32;
 
-export default function Lives({ count }: Props) {
   const containerClasses = classNames(
     "flex-row gap-1 items-center",
     "bg-white/30 px-3 py-1.5 rounded-full",
@@ -18,7 +16,7 @@ export default function Lives({ count }: Props) {
 
   return (
     <TouchableOpacity className={containerClasses} onPress={onPress}>
-      <Icon icon="Wallo.Heart" size={20} />
+      <Icon icon="Wallo.Flame" size={20} />
       <Text size="sm" className="text-white">
         {count}
       </Text>

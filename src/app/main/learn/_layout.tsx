@@ -4,7 +4,12 @@ interface LayoutProps {}
 
 const Layout: React.FC<LayoutProps> = () => {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: "white" },
+      }}
+    >
       <Stack.Screen name="index" />
       <Stack.Screen name="[module]/home" />
       <Stack.Screen name="[module]/lesson" />

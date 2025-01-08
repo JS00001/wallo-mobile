@@ -18,7 +18,7 @@ export default function StreakCard({ size, weekData }: Props) {
   return (
     <View className={containerClasses}>
       <View>
-        <Text size="lg" className="font-semibold text-blue-700">
+        <Text size="lg" className="font-semibold text-indigo-500">
           {size}-day Streak
         </Text>
         <Text size="sm" className="tracking-[0px] text-gray-500">
@@ -33,21 +33,20 @@ export default function StreakCard({ size, weekData }: Props) {
 
           const containerClasses = classNames(
             "items-center gap-1 p-2 rounded-xl",
-            isToday && "bg-blue-700",
+            isToday && "bg-indigo-500",
           );
 
           const iconContainerClasses = classNames(
             "h-7 w-7 rounded-full",
             "items-center justify-center",
-            "border border-blue-700",
-            isToday && !hasStreak && "border-white",
-            isToday && hasStreak && "bg-blue-900",
-            !isToday && hasStreak && "bg-blue-700",
-            !isToday && !hasStreak && "border-blue-700",
+            "border border-indigo-500",
+            isToday && "bg-indigo-800 border-indigo-800",
+            !isToday && hasStreak && "bg-indigo-500",
+            !isToday && !hasStreak && "border-indigo-500",
           );
 
           const textClasses = classNames(
-            isToday ? "text-white" : "text-blue-700",
+            isToday ? "text-white" : "text-indigo-500",
           );
 
           return (

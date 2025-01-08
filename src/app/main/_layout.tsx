@@ -11,14 +11,14 @@ export default function Layout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.blue[700],
+        tabBarActiveTintColor: colors.indigo[700],
         tabBarInactiveTintColor: colors.gray[500],
         tabBarItemStyle: {
           marginTop: 16,
         },
         tabBarStyle: {
           position: "absolute",
-          height: 90,
+          height: 100,
         },
         sceneStyle: {
           backgroundColor: "white",

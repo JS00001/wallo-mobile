@@ -14,7 +14,7 @@ export default function ProgressBar({
   progress,
   total,
   hideLabel,
-  color = colors.blue[600],
+  color = colors.indigo[600],
 }: Props) {
   const barStyles = {
     backgroundColor: color,

@@ -22,7 +22,7 @@ export default function Card({
   description,
   progress,
   leftImage = null,
-  color = colors.blue[700],
+  color = colors.indigo[500],
   onPress,
   className,
   ...props
@@ -37,7 +37,7 @@ export default function Card({
     <TouchableOpacity onPress={onPress} className={containerClasses} {...props}>
       {leftImage}
 
-      <View className="gap-3">
+      <View className="flex-1 gap-3">
         <View>
           <Text size="lg" style={{ color }} className="font-medium" lines={1}>
             {title}
