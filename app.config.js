@@ -5,10 +5,10 @@ const IS_DEV = process.env.APP_VARIANT === 'development';
 export default {
   expo: {
     name: IS_DEV ? 'Wallo (DEV)' : 'Wallo',
-    slug: 'wallo',
+    slug: 'wallo-mobile',
     version: packageFile.version,
     orientation: 'portrait',
-    icon: './assets/images/icon.png',
+    icon: IS_DEV ? './assets/images/icon-dev.png' : './assets/images/icon.png',
     scheme: 'myapp',
     userInterfaceStyle: 'light',
     newArchEnabled: true,
@@ -23,21 +23,18 @@ export default {
         backgroundColor: '#ffffff',
       },
     },
-    web: {
-      bundler: 'metro',
-      output: 'static',
-      favicon: './assets/images/favicon.png',
-    },
     plugins: [
       'expo-apple-authentication',
       'expo-router',
       [
         'expo-splash-screen',
         {
-          image: './assets/images/splash-icon.png',
           imageWidth: 200,
           resizeMode: 'contain',
           backgroundColor: '#4F46E5',
+          image: IS_DEV
+            ? './assets/images/splash-icon-dev.png'
+            : './assets/images/splash-icon.png',
         },
       ],
       'expo-font',
@@ -53,5 +50,11 @@ export default {
         projectId: '3612145c-a83c-446f-b867-033dfe61af69',
       },
     },
+  },
+  updates: {
+    url: 'https://u.expo.dev/3612145c-a83c-446f-b867-033dfe61af69',
+  },
+  runtimeVersion: {
+    policy: 'appVersion',
   },
 };

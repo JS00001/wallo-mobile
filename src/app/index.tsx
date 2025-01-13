@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native";
 export default function Index() {
   return (
     <SafeAreaView>
-      <AppleOAuthButton />;
+      <AppleOAuthButton />
     </SafeAreaView>
   );
 }
