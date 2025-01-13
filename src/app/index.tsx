@@ -1,5 +1,5 @@
-import { Redirect } from "expo-router";
+import AppleOAuthButton from "@/components/AppleOAuthButton";
 
 export default function Index() {
-  return <Redirect href="/main/home" />;
+  return <AppleOAuthButton />;
 }

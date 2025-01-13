@@ -9,6 +9,7 @@ export default {
     userInterfaceStyle: 'light',
     newArchEnabled: true,
     ios: {
+      usesAppleSignIn: true,
       supportsTablet: true,
       bundleIdentifier: 'com.wallomobile',
     },
@@ -24,6 +25,7 @@ export default {
       favicon: './assets/images/favicon.png',
     },
     plugins: [
+      'expo-apple-authentication',
       'expo-router',
       [
         'expo-splash-screen',
