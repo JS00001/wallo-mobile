@@ -1,8 +1,12 @@
+const packageFile = require('./package.json');
+
+const IS_DEV = process.env.APP_VARIANT === 'development';
+
 export default {
   expo: {
-    name: 'wallo-mobile',
-    slug: 'wallo-mobile',
-    version: '1.0.0',
+    name: IS_DEV ? 'Wallo (DEV)' : 'Wallo',
+    slug: 'wallo',
+    version: packageFile.version,
     orientation: 'portrait',
     icon: './assets/images/icon.png',
     scheme: 'myapp',
@@ -10,8 +14,8 @@ export default {
     newArchEnabled: true,
     ios: {
       usesAppleSignIn: true,
-      supportsTablet: true,
-      bundleIdentifier: 'com.wallomobile',
+      supportsTablet: false,
+      bundleIdentifier: IS_DEV ? 'com.wallomobile.dev' : 'com.wallomobile',
     },
     android: {
       adaptiveIcon: {
