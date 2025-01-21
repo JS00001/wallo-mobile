@@ -1,5 +1,11 @@
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
+import { useEffect } from "react";
+import { View } from "react-native";
 import colors from "tailwindcss/colors";
-import { DimensionValue, View } from "react-native";
 
 import Text from "@/ui/Text";
 
@@ -16,10 +22,19 @@ export default function ProgressBar({
   hideLabel,
   color = colors.indigo[600],
 }: Props) {
-  const barStyles = {
-    backgroundColor: color,
-    width: `${(progress / total) * 100}%` as DimensionValue,
-  };
+  const initialWidth = (progress / total) * 100;
+
+  const width = useSharedValue(initialWidth);
+
+  useEffect(() => {
+    width.value = withTiming(initialWidth, { duration: 500 });
+  }, [progress, total]);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    width: `${width.value}%`,
+  }));
+
+  const barStyles = [{ backgroundColor: color }, animatedStyle];
 
   const labelStyles = {
     color: total > 0 ? color : colors.gray[400],
@@ -29,9 +44,9 @@ export default function ProgressBar({
     <View className="max-w-full flex-row items-center gap-2">
       {/* Bar */}
       <View className="h-4 w-full shrink rounded-full bg-gray-200">
-        <View style={barStyles} className="h-full rounded-full px-2">
+        <Animated.View style={barStyles} className="h-full rounded-full px-2">
           <View className="mt-[3px] h-1 w-full rounded-full bg-white/25" />
-        </View>
+        </Animated.View>
       </View>
 
       {/* Label */}

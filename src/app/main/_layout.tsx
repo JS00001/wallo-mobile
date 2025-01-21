@@ -8,10 +8,14 @@ import Text from "@/ui/Text";
 import useAuthStore from "@/store/auth";
 
 export default function Layout() {
-  const { isAuthed } = useAuthStore();
+  const { user } = useAuthStore();
 
-  if (!isAuthed()) {
+  if (!user) {
     return <Redirect href="/auth/login" />;
+  }
+
+  if (!user.onboarded) {
+    return <Redirect href="/onboarding/step1" />;
   }
 
   return (

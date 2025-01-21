@@ -7,11 +7,15 @@ import useAuthStore from "@/store/auth";
  * authenticated. Also, redirect to the home page once the user logs in.
  */
 export default function Layout() {
-  const { isAuthed } = useAuthStore();
+  const { user } = useAuthStore();
 
-  if (isAuthed()) {
-    return <Redirect href="/main/home" />;
+  if (!user) {
+    return <Slot />;
   }
 
-  return <Slot />;
+  if (!user.onboarded) {
+    return <Redirect href="/onboarding/step1" />;
+  }
+
+  return <Redirect href="/main/home" />;
 }

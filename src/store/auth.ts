@@ -23,7 +23,6 @@ interface IAuthMetadata {
 type IAuthStoreState = IAuthState & IAuthMetadata;
 
 interface IAuthStore extends IAuthStoreState {
-  isAuthed(): boolean;
   logout: () => void;
   login: (state: IAuthState) => void;
   setField: <K extends keyof IAuthStoreState>(
@@ -76,13 +75,8 @@ const useAuthStore = create<IAuthStore>()(
         set((state) => ({ ...state, [field]: value }));
       };
 
-      const isAuthed = () => {
-        return !!get()?.accessToken;
-      };
-
       return {
         ...initialState,
-        isAuthed,
         login,
         logout,
         setField,
