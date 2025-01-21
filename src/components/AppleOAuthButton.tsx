@@ -15,9 +15,12 @@ export default function AppleOAuthButton() {
         ],
       });
 
+      const responseGivenName = credential.fullName?.givenName;
+      const responseFamilyName = credential.fullName?.familyName;
+
       // We only get the full name on the first login, past that, we never receive it again
       // so we need to cache it in case of errors, so that we can still get the value
-      if (credential.fullName) {
+      if (responseGivenName && responseFamilyName) {
         await AsyncStorage.setItem(
           "appleOAuthFullName",
           JSON.stringify(credential.fullName),
@@ -28,18 +31,19 @@ export default function AppleOAuthButton() {
       // We can pass null. The backend will accept null as long as the user has created their account
       // before with a full name
       const fullName = await (async () => {
-        if (credential.fullName) return credential.fullName;
+        if (responseGivenName && responseFamilyName) return credential.fullName;
 
         const fullName = await AsyncStorage.getItem("appleOAuthFullName");
         const fullNameObj = JSON.parse(fullName || "null");
         return fullNameObj as AppleAuthentication.AppleAuthenticationFullName | null;
       })();
 
-      await mutation.mutateAsync({
+      const res = await mutation.mutateAsync({
         fullName,
         identityToken: credential.identityToken!,
       });
     } catch (e: any) {
+      console.error(e.response.data);
       if (e.code === "ERR_REQUEST_CANCELED") {
         return;
       }

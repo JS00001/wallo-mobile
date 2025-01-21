@@ -1,10 +1,8 @@
 import { useFonts } from "expo-font";
-import React, { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { PropsWithChildren, useEffect } from "react";
 
-const SplashScreenProvider: React.FC<{ children?: React.ReactNode }> = ({
-  children,
-}) => {
+export default function SplashScreenProvider({ children }: PropsWithChildren) {
   const [loaded, error] = useFonts({
     Gabarito: require("../../assets/fonts/Gabarito-VariableFont_wght.ttf"),
   });
@@ -13,9 +11,16 @@ const SplashScreenProvider: React.FC<{ children?: React.ReactNode }> = ({
    * When the fonts load, hide the splash screen
    */
   useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
+    const checkSplashState = async () => {
+      if (loaded || error) {
+        // Wait a tick to prevent a flicker of null content still showing
+        // when the splash screen is hidden
+        await new Promise((resolve) => setTimeout(resolve));
+        await SplashScreen.hideAsync();
+      }
+    };
+
+    checkSplashState();
   }, [loaded, error]);
 
   if (!loaded || error) {
@@ -23,6 +28,4 @@ const SplashScreenProvider: React.FC<{ children?: React.ReactNode }> = ({
   }
 
   return children;
-};
-
-export default SplashScreenProvider;
+}

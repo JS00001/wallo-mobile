@@ -34,5 +34,5 @@ export namespace API {
   };
 
   /** The response returned from the API */
-  export type Response<T> = SuccessResponse<T> | ErrorResponse;
+  export type Response<T = {}> = SuccessResponse<T> | ErrorResponse;
 }

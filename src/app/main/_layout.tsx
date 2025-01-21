@@ -1,12 +1,19 @@
-import { Tabs } from "expo-router";
 import { BlurView } from "expo-blur";
 import colors from "tailwindcss/colors";
 import { StyleSheet } from "react-native";
+import { Redirect, Tabs } from "expo-router";
 
 import Icon from "@/ui/Icon";
 import Text from "@/ui/Text";
+import useAuthStore from "@/store/auth";
 
 export default function Layout() {
+  const { isAuthed } = useAuthStore();
+
+  if (!isAuthed()) {
+    return <Redirect href="/auth/login" />;
+  }
+
   return (
     <Tabs
       screenOptions={{
