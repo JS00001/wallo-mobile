@@ -23,7 +23,7 @@ export default function Layout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.indigo[700],
-        tabBarInactiveTintColor: colors.gray[500],
+        tabBarInactiveTintColor: colors.gray[400],
         tabBarItemStyle: {
           marginTop: 16,
         },
@@ -62,7 +62,7 @@ export default function Layout() {
                 className="mb-2"
                 size={32}
                 color={color}
-                icon="Solar.HomeDuotone"
+                icon="Wallo.Home"
               />
             );
           },
@@ -78,7 +78,7 @@ export default function Layout() {
                 className="mb-2"
                 size={32}
                 color={color}
-                icon="Solar.BookDuotone"
+                icon="Wallo.Book"
               />
             );
           },
@@ -94,7 +94,7 @@ export default function Layout() {
                 className="mb-2"
                 size={32}
                 color={color}
-                icon="Solar.ShopDuotone"
+                icon="Wallo.Shop"
               />
             );
           },
@@ -110,7 +110,7 @@ export default function Layout() {
                 className="mb-2"
                 size={32}
                 color={color}
-                icon="Solar.UserDuotone"
+                icon="Wallo.User"
               />
             );
           },

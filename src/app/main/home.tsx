@@ -12,10 +12,7 @@ export default function Home() {
   return (
     <ScreenLayout title="Home" showGems showStreak>
       {/* Streak Box */}
-      <StreakCard
-        size={212}
-        weekData={[true, false, false, false, false, false, false]}
-      />
+      <StreakCard />
 
       {/* Section */}
       <View className="gap-4">

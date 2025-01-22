@@ -3,15 +3,14 @@ import classNames from "classnames";
 
 import Text from "@/ui/Text";
 import Icon from "@/ui/Icon";
+import useAuthStore from "@/store/auth";
 
-interface Props {
-  size: number;
-  weekData: boolean[];
-}
-
-export default function StreakCard({ size, weekData }: Props) {
+export default function StreakCard() {
   const TODAY = new Date().getDay();
   const DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const size = useAuthStore((s) => s.user!.streak);
+  const weekData = useAuthStore((s) => s.user!.weekData);
 
   const containerClasses = classNames("gap-y-3 p-5 card");
 

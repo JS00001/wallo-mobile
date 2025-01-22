@@ -3,9 +3,10 @@ import { TouchableOpacity } from "react-native";
 
 import Icon from "@/ui/Icon";
 import Text from "@/ui/Text";
+import useAuthStore from "@/store/auth";
 
 export default function LiveCount() {
-  const count = 32;
+  const count = useAuthStore((s) => s.user!.lives);
 
   const containerClasses = classNames(
     "flex-row gap-1 items-center",
