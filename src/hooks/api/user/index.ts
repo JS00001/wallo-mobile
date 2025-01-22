@@ -1,1 +1,2 @@
-export * from './query';
+export * from './queries';
+export * from './mutations';

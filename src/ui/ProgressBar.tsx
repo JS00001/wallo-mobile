@@ -22,7 +22,7 @@ export default function ProgressBar({
   hideLabel,
   color = colors.indigo[600],
 }: Props) {
-  const initialWidth = (progress / total) * 100;
+  const initialWidth = Math.min((progress / total) * 100, 100);
 
   const width = useSharedValue(initialWidth);
 

@@ -21,3 +21,8 @@ export type GetUserResponse = API.Response<{
   /** The user's information */
   user: IUser;
 }>;
+
+export type UpdateUserResponse = API.Response<{
+  /** The user's information */
+  user: IUser;
+}>;

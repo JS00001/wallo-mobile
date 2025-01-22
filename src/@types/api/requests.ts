@@ -6,3 +6,10 @@ export interface AppleOAuthRequest {
   /** The users name, only exists on first fetch */
   fullName: AppleAuthenticationFullName | null;
 }
+
+export interface UpdateUserRequest {
+  /** The age of the user */
+  age?: number;
+  /** The preferred courses of the user */
+  preferredCourses?: string[];
+}
