@@ -1,18 +1,9 @@
-import { useState } from "react";
-import { View } from "react-native";
-import { Href, Redirect, router, Slot } from "expo-router";
+import { Redirect, Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Button from "@/ui/Button";
 import useAuthStore from "@/store/auth";
 import ProgressBar from "@/ui/ProgressBar";
-
-enum Step {
-  PreferredCourses,
-  Age,
-  TermsOfService,
-  Finish,
-}
+import useOnboardingStore, { OnboardingScreen } from "@/store/onboarding";
 
 /**
  * "Middleware" for auth, don't ever show the auth layout if the user is already
@@ -20,17 +11,9 @@ enum Step {
  */
 export default function Layout() {
   const { user } = useAuthStore();
-  const [step, setStep] = useState(1);
 
-  const onContinue = () => {
-    setStep((step) => step + 1);
-    // if (step === Step.Finish) {
-    //   return;
-    // }
-
-    // const nextStep = `/onboarding/step${step + 1}` as Href;
-    // router.push(nextStep);
-  };
+  const totalScreens = Object.keys(OnboardingScreen).length;
+  const progress = useOnboardingStore((state) => state.screen + 1);
 
   if (!user) {
     return <Redirect href="/auth/login" />;
@@ -41,14 +24,10 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaView className="flex-1 gap-4 p-6">
-      <ProgressBar progress={step} total={Object.keys(Step).length} hideLabel />
+    <SafeAreaView className="flex-1 gap-8 p-6">
+      <ProgressBar hideLabel progress={progress} total={totalScreens} />
 
-      <View className="flex-1">
-        <Slot />
-      </View>
-
-      <Button onPress={onContinue}>Continue</Button>
+      <Slot />
     </SafeAreaView>
   );
 }

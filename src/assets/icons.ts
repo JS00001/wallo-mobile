@@ -18,6 +18,7 @@ export const Wallo = {
   Heart: require('./wallo-icons/Heart').default,
   MoneyBag: require('./wallo-icons/MoneyBag').default,
   Trophy: require('./wallo-icons/Trophy').default,
+  Warning: require('./wallo-icons/Warning').default,
 };
 
 export const Solar = {
