@@ -12,7 +12,7 @@ import useOnboardingStore, { OnboardingScreen } from "@/store/onboarding";
 export default function Layout() {
   const { user } = useAuthStore();
 
-  const totalScreens = Object.keys(OnboardingScreen).length;
+  const totalScreens = Object.keys(OnboardingScreen).length / 2;
   const progress = useOnboardingStore((state) => state.screen + 1);
 
   if (!user) {

@@ -5,18 +5,17 @@ export enum OnboardingScreen {
   PreferredCourses,
   Age,
   TermsOfService,
-  Finish,
 }
 
 interface IOnboardingState {
   screen: OnboardingScreen;
-  age: string | null;
+  age: number | null;
   preferredCourses: string[];
 }
 
 interface IOnboardingStore extends IOnboardingState {
   nextScreen: () => void;
-  setAge: (age: string) => void;
+  setAge: (age: number) => void;
   toggleCourse: (course: string) => void;
 }
 
@@ -35,7 +34,7 @@ const useOnboardingStore = create<IOnboardingStore>()((set) => {
     );
   };
 
-  const setAge = (age: string) => {
+  const setAge = (age: number) => {
     set((state) =>
       produce(state, (draft) => {
         draft.age = age;
