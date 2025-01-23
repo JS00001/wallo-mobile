@@ -45,7 +45,7 @@ export default function ScreenLayout({
           contentContainerClassName={contentContainerClasses}
         >
           {/* Background */}
-          <View className="absolute -left-6 -top-96 h-[500px] w-screen bg-indigo-600" />
+          <View className="absolute -left-6 -top-96 h-[490px] w-screen bg-indigo-600" />
 
           {/* Header */}
           <View className="flex-row items-center justify-between pb-6">

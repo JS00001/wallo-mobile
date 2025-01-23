@@ -4,8 +4,10 @@ import Icon from "@/ui/Icon";
 import Text from "@/ui/Text";
 import Pressable from "@/ui/Pressable";
 import useAuthStore from "@/store/auth";
+import useBottomSheetStore from "@/store/bottom-sheets";
 
 export default function LiveCount() {
+  const bottomSheet = useBottomSheetStore();
   const count = useAuthStore((s) => s.user!.lives);
 
   const containerClasses = classNames(
@@ -13,7 +15,9 @@ export default function LiveCount() {
     "px-3 py-2",
   );
 
-  const onPress = () => {};
+  const onPress = () => {
+    bottomSheet.open("LIVES");
+  };
 
   return (
     <Pressable size="sm" className={containerClasses} onPress={onPress}>

@@ -4,8 +4,10 @@ import Icon from "@/ui/Icon";
 import Text from "@/ui/Text";
 import Pressable from "@/ui/Pressable";
 import useAuthStore from "@/store/auth";
+import useBottomSheetStore from "@/store/bottom-sheets";
 
 export default function GemCount() {
+  const bottomSheet = useBottomSheetStore();
   const count = useAuthStore((s) => s.user!.virtualCurrency);
 
   const containerClasses = classNames(
@@ -23,7 +25,9 @@ export default function GemCount() {
     return (count / 1_000_000_000).toFixed(2) + "B";
   })();
 
-  const onPress = () => {};
+  const onPress = () => {
+    bottomSheet.open("GEMS");
+  };
 
   return (
     <Pressable size="sm" className={containerClasses} onPress={onPress}>

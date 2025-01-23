@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import colors from "tailwindcss/colors";
 
 import Text from "@/ui/Text";
 import Icon from "@/ui/Icon";
@@ -30,7 +31,13 @@ export default function StreakDetailsWidget() {
 
           return (
             <View className="items-center gap-1" key={day}>
-              {hasStreak && <Icon icon="Wallo.Checkmark" size={32} />}
+              {hasStreak && (
+                <Icon
+                  icon="Wallo.Checkmark"
+                  color={colors.indigo[600]}
+                  size={32}
+                />
+              )}
 
               {!hasStreak && (
                 <View className="h-8 w-8 rounded-full border-2 border-gray-300" />

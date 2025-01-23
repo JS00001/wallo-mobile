@@ -27,7 +27,7 @@ export default function SelectionCard({
 
   const containerClasses = classNames(
     "flex-row items-center gap-6",
-    "rounded-xl border px-6 py-5",
+    "rounded-xl border-2 px-6 py-5",
     selected ? "border-indigo-600" : "border-gray-300",
     selected ? "bg-indigo-100" : "bg-white",
   );

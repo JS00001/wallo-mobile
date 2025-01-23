@@ -1,101 +1,63 @@
-import ScreenLayout from "@/components/ScreenLayout";
-import Card from "@/ui/Card";
-import Icon from "@/ui/Icon";
-import Section from "@/ui/Section";
-import { router } from "expo-router";
 import { View } from "react-native";
-import colors from "tailwindcss/colors";
+
+import Text from "@/ui/Text";
+import Course from "@/ui/Course";
+import { useGetCourses } from "@/hooks/api/courses";
+import ScreenLayout from "@/components/ScreenLayout";
 
 export default function Learn() {
-  const onLessonPress = () => {
-    router.push("/main/learn/lessonid/home");
-  };
+  const query = useGetCourses();
+
+  if (query.isLoading) return null;
+  if (query.error) return null;
+
+  const courses = query.data?.courses || [];
+  const inProgressCourses = courses.filter((c) => {
+    return c.completedLessons > 0 && c.completedLessons < c.totalLessons;
+  });
+
+  const completedCourses = courses.filter((c) => {
+    return c.completedLessons === c.totalLessons;
+  });
+
+  const suggestedCourses = courses.filter((c) => {
+    return c.completedLessons === 0;
+  });
 
   return (
     <ScreenLayout title="Learn" showLives showGems>
-      <View className="gap-4">
-        <Section color="dark">In Progress</Section>
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.indigo[500]}
-          progress={{
-            progress: 5,
-            total: 8,
-          }}
-          onPress={onLessonPress}
-        />
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.indigo[500]}
-          progress={{
-            progress: 5,
-            total: 8,
-          }}
-        />
-      </View>
+      {inProgressCourses.length > 0 && (
+        <View className="gap-2">
+          <Text size="lg" className="font-medium text-gray-700">
+            In Progress
+          </Text>
 
-      <View className="gap-4">
-        <Section>Lessons</Section>
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.gray[500]}
-          progress={{
-            progress: 0,
-            total: 8,
-          }}
-        />
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.gray[500]}
-          progress={{
-            progress: 0,
-            total: 8,
-          }}
-        />
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.gray[500]}
-          progress={{
-            progress: 0,
-            total: 8,
-          }}
-        />
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.gray[500]}
-          progress={{
-            progress: 0,
-            total: 8,
-          }}
-        />
-      </View>
+          {inProgressCourses.map((course) => (
+            <Course key={course._id} course={course} />
+          ))}
+        </View>
+      )}
 
-      <View className="gap-4">
-        <Section>Completed</Section>
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.green[500]}
-          progress={{
-            progress: 8,
-            total: 8,
-          }}
-        />
-        <Card
-          title="Finance 101"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          color={colors.green[500]}
-          progress={{
-            progress: 8,
-            total: 8,
-          }}
-        />
+      {completedCourses.length > 0 && (
+        <View className="gap-2">
+          <Text size="lg" className="font-medium text-gray-700">
+            Completed Courses
+          </Text>
+
+          {completedCourses.map((course) => (
+            <Course key={course._id} course={course} />
+          ))}
+        </View>
+      )}
+
+      <View className="gap-2">
+        <Text size="lg" className="font-medium text-white">
+          Suggested Courses
+        </Text>
+
+        {suggestedCourses.map((course) => (
+          <Course key={course._id} course={course} />
+        ))}
       </View>
     </ScreenLayout>
   );

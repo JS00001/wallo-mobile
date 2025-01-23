@@ -9,6 +9,9 @@ import AuthProvider from "@/providers/Auth";
 import queryClient from "@/lib/query-client";
 import SplashScreenProvider from "@/providers/SplashScreen";
 import setupRequestInterceptors from "@/lib/axios/interceptors";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import BottomSheetComponent from "@/components/BottomSheets";
 
 // Prevent the native splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
@@ -22,7 +25,12 @@ export default function RootLayout() {
       <AuthProvider>
         <SplashScreenProvider>
           <SafeAreaProvider>
-            <Slot />
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <BottomSheetModalProvider>
+                <BottomSheetComponent />
+                <Slot />
+              </BottomSheetModalProvider>
+            </GestureHandlerRootView>
           </SafeAreaProvider>
         </SplashScreenProvider>
       </AuthProvider>

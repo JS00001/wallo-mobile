@@ -1,4 +1,5 @@
 import { useLogout } from "@/hooks/api/auth";
+import Button from "@/ui/Button";
 import { TouchableOpacity, Text } from "react-native";
 
 export default function Profile() {
@@ -9,11 +10,8 @@ export default function Profile() {
   };
 
   return (
-    <TouchableOpacity
-      className="mt-32 w-full rounded-full bg-red-500 p-2"
-      onPress={logout}
-    >
-      <Text className="text-center text-white">Logout</Text>
-    </TouchableOpacity>
+    <Button color="danger" className="mt-32" onPress={logout}>
+      Logout
+    </Button>
   );
 }
