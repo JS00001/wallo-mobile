@@ -4,6 +4,10 @@
 
 @layer components {
   .card {
-    @apply shadow-card rounded-xl border border-gray-200 bg-white;
+    @apply rounded-xl border border-gray-200 bg-white shadow-card;
+  }
+
+  .container {
+    @apply rounded-xl border-2 border-gray-300 bg-white;
   }
 }

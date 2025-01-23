@@ -1,16 +1,16 @@
 import classNames from "classnames";
-import { TouchableOpacity } from "react-native";
 
 import Icon from "@/ui/Icon";
 import Text from "@/ui/Text";
+import Pressable from "@/ui/Pressable";
 import useAuthStore from "@/store/auth";
 
 export default function GemCount() {
   const count = useAuthStore((s) => s.user!.virtualCurrency);
 
   const containerClasses = classNames(
-    "flex-row gap-1 items-center",
-    "bg-white/30 px-3 py-1.5 rounded-full",
+    "flex-row items-center gap-1",
+    "px-3 py-2",
   );
 
   // Format the count if greater than 999 to 3 digits then the K or M, etc. Anything
@@ -26,11 +26,11 @@ export default function GemCount() {
   const onPress = () => {};
 
   return (
-    <TouchableOpacity className={containerClasses} onPress={onPress}>
+    <Pressable size="sm" className={containerClasses} onPress={onPress}>
       <Icon icon="Wallo.Gem" size={20} />
-      <Text size="sm" className="text-white">
+      <Text size="sm" className="font-medium text-blue-500">
         {formattedCount}
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 }

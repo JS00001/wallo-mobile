@@ -34,6 +34,10 @@ export interface IUser {
   virtualCurrency: number;
   /** How many lives the user has */
   lives: number;
+  /** Whether they claimed the daily reward */
+  claimedDailyReward: boolean;
+  /** The number of lessons that a user has completed for the day */
+  dailyLessonCount: number;
 
   /** METADATA */
   /** The date that the user last completed a streak */

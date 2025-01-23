@@ -38,7 +38,7 @@ export default function ScreenLayout({
 
   return (
     <>
-      <SafeAreaView className="flex-1">
+      <SafeAreaView className="flex-1 bg-gray-50">
         <ScrollView
           className={viewClasses}
           showsVerticalScrollIndicator={false}
