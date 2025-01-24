@@ -1,6 +1,5 @@
-import { useLogout } from "@/hooks/api/auth";
 import Button from "@/ui/Button";
-import { TouchableOpacity, Text } from "react-native";
+import { useLogout } from "@/hooks/api/auth";
 
 export default function Profile() {
   const mutation = useLogout();

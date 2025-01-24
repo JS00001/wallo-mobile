@@ -26,6 +26,7 @@ export const Wallo = {
 
 export const Solar = {
   BookDuotone: require('./solar-icons/BookDuotone').default,
+  Close: require('./solar-icons/Close').default,
   HomeDuotone: require('./solar-icons/HomeDuotone').default,
   ShopDuotone: require('./solar-icons/ShopDuotone').default,
   UserDuotone: require('./solar-icons/UserDuotone').default,

@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import { router } from "expo-router";
 
 import Text from "@/ui/Text";
 import Icon from "@/ui/Icon";
@@ -12,13 +13,21 @@ interface Props {}
 export default function DailyRewardsWidget({}: Props) {
   const { user } = useAuthStore();
 
+  const onDailyRewardPress = () => {
+    router.push("/main/home/daily-chest");
+  };
+
   return (
     <View className="gap-2">
       <Text size="lg" className="font-medium text-gray-700">
         Daily Challenges
       </Text>
 
-      <Pressable className="flex-row items-center gap-4 p-4" size="md">
+      <Pressable
+        className="flex-row items-center gap-4 p-4"
+        size="md"
+        onPress={onDailyRewardPress}
+      >
         <View className="rounded-full bg-blue-100 p-3">
           <Icon icon="Wallo.Gem" size={24} />
         </View>
