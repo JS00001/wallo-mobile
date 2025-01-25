@@ -36,3 +36,10 @@ export type GetCoursesResponse = API.Response<{
   /** The courses the user has access to */
   courses: IPopulatedCourse[];
 }>;
+
+export type ClaimDailyRewardResponse = API.Response<{
+  /** The user's information */
+  user: IUser;
+  /** The amount of virtual currency the user received */
+  virtualCurrency: number;
+}>;

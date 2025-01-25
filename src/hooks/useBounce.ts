@@ -12,7 +12,7 @@ interface Props {
 }
 
 const useBounce = (props?: Props) => {
-  const height = props?.height || 36;
+  const height = props?.height || 12;
   const duration = props?.duration || 1500;
 
   const offset = useSharedValue(height);
