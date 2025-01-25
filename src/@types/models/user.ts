@@ -3,6 +3,12 @@ export enum SystemRole {
   User = 'user',
 }
 
+export enum Reward {
+  Daily = 'Daily',
+  OneLesson = 'OneLesson',
+  ThreeLessons = 'ThreeLessons',
+}
+
 export interface IUser {
   /** SYSTEM DATA */
   /** The id of the user */
@@ -35,7 +41,7 @@ export interface IUser {
   /** How many lives the user has */
   lives: number;
   /** Whether they claimed the daily reward */
-  claimedDailyReward: boolean;
+  claimedDailyRewards: Reward[];
   /** The number of lessons that a user has completed for the day */
   dailyLessonCount: number;
 

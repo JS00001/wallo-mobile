@@ -4,13 +4,14 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import * as Haptic from "expo-haptics";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import LottieView from "lottie-react-native";
 import { Pressable, View } from "react-native";
 import { useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Text from "@/ui/Text";
+import { Reward } from "@/@types";
 import IconButton from "@/ui/IconButton";
 import useBounce from "@/hooks/useBounce";
 import GemCount from "@/components/Statistics/GemCount";
@@ -23,6 +24,9 @@ enum AnimationDirection {
 }
 
 export default function DailyChest() {
+  const [animationFinished, setAnimationFinished] = useState(false);
+
+  const local = useLocalSearchParams();
   const animation = useRef<LottieView>(null);
   const direction = useRef(AnimationDirection.Forward);
 
@@ -30,8 +34,7 @@ export default function DailyChest() {
   const mutation = useClaimDailyReward();
   const treasureChestScale = useSharedValue(1);
 
-  const [animationFinished, setAnimationFinished] = useState(false);
-
+  const rewardType = local.type as Reward;
   const disablePress = mutation.isPending || animationFinished;
 
   /**
@@ -48,10 +51,15 @@ export default function DailyChest() {
    * reward, and play the animation
    */
   const onPress = async () => {
+    if (animationFinished) {
+      router.back();
+      return;
+    }
+
     if (disablePress) return;
 
     animation.current?.play(0);
-    await mutation.mutateAsync();
+    mutation.mutateAsync({ type: rewardType });
   };
 
   /**
@@ -119,7 +127,7 @@ export default function DailyChest() {
               loop={false}
               onAnimationFinish={onAnimationFinish}
               style={{ width: "100%", height: "50%" }}
-              source={require("../../../assets/animations/treasure.lottie")}
+              source={require("../../../../assets/animations/treasure.lottie")}
             />
           </Animated.View>
         </Pressable>

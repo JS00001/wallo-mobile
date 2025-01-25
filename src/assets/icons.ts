@@ -4,7 +4,7 @@ export type IconProps = {
   className?: string;
 };
 
-// Allow for 'Wallo.Checkmark' or 'Solar.Sun', or any of the
+// Allow for 'Wallo.CheckmarkFilled' or 'Solar.Sun', or any of the
 // other icons to be used as a type, based on their collection
 export type IconType =
   | `Wallo.${keyof typeof Wallo}`
@@ -13,6 +13,7 @@ export type IconType =
 export const Wallo = {
   Book: require('./wallo-icons/Book').default,
   Checkmark: require('./wallo-icons/Checkmark').default,
+  CheckmarkFilled: require('./wallo-icons/CheckmarkFilled').default,
   Flame: require('./wallo-icons/Flame').default,
   Gem: require('./wallo-icons/Gem').default,
   Heart: require('./wallo-icons/Heart').default,

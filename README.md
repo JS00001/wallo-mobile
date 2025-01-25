@@ -8,6 +8,7 @@ Wallo is a financial education platform that allows users to learn about persona
 - [Setting up the environment](#setting-up-the-environment)
 - [Running the application](#running-the-application)
 - [Architecture](#architecture)
+  - [Managing Server State](#managing-server-state)
 
 ## Setting up the environment
 
@@ -40,3 +41,11 @@ yarn dev
 | `store`      | Client-side stores using Zustand. _Preferred over using React Context_                                                         |
 | `styles`     | Global styles, mainly for setting up Nativewind.                                                                               |
 | `ui`         | Small blocks of UI components such as Buttons, Inputs, etc.                                                                    |
+
+### Managing Server State
+
+All async state should be handled via Tanstack Query. Every API query and mutation has an associated hook in the `hooks/api` folder. The hooks should be used in the components to fetch and mutate data. The hooks are responsible for managing the state and fetching the data from the backend.
+
+Relevant optimistic updates or cache updates (when mutating data) should be handled in the hooks.
+
+Every component using a query should validate `isLoading`, `isError`, and `data` states to handle the UI accordingly.

@@ -33,7 +33,7 @@ export default function StreakDetailsWidget() {
             <View className="items-center gap-1" key={day}>
               {hasStreak && (
                 <Icon
-                  icon="Wallo.Checkmark"
+                  icon="Wallo.CheckmarkFilled"
                   color={colors.indigo[600]}
                   size={32}
                 />

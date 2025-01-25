@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native";
 export default function ModuleHome() {
   return (
     <SafeAreaView>
-      <ProgressRing progress={2} total={8} icon="Wallo.Checkmark" />
+      <ProgressRing progress={2} total={8} icon="Wallo.CheckmarkFilled" />
     </SafeAreaView>
   );
 }
