@@ -4,10 +4,10 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import * as Haptic from "expo-haptics";
-import { router, useLocalSearchParams } from "expo-router";
+import { useRef, useState } from "react";
 import LottieView from "lottie-react-native";
 import { Pressable, View } from "react-native";
-import { useEffect, useRef, useState } from "react";
+import { router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Text from "@/ui/Text";
@@ -37,14 +37,11 @@ export default function DailyChest() {
   const rewardType = local.type as Reward;
   const disablePress = mutation.isPending || animationFinished;
 
-  /**
-   * Reset the animation back to original state when
-   * the component is unmounted
-   */
-  useEffect(() => {
-    const element = animation.current;
-    return element?.reset;
-  }, []);
+  const chestCta = {
+    [Reward.Daily]: "Daily Chest",
+    [Reward.OneLesson]: "Daily Lesson Chest",
+    [Reward.ThreeLessons]: "Daily Lesson Chest",
+  }[rewardType];
 
   /**
    * When the chest is pressed, open the daily
@@ -141,7 +138,7 @@ export default function DailyChest() {
                 Tap to open your
               </Text>
               <Text size="4xl" className="font-semibold text-white">
-                Daily Chest
+                {chestCta}
               </Text>
             </Animated.View>
           )}

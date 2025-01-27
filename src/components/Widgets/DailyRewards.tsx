@@ -11,6 +11,7 @@ import Pressable from "@/ui/Pressable";
 import useAuthStore from "@/store/auth";
 import { IconType } from "@/assets/icons";
 import ProgressBar from "@/ui/ProgressBar";
+import classNames from "classnames";
 
 interface Props {}
 
@@ -112,6 +113,12 @@ function DailyReward({
     backgroundColor: `${color}20`,
   };
 
+  const overlayClasses = classNames(
+    "absolute left-0 right-0 top-0 bottom-0",
+    "flex-row items-center justify-center gap-2",
+    "overflow-hidden rounded-xl bg-white/25",
+  );
+
   return (
     <Pressable
       size="md"
@@ -145,10 +152,7 @@ function DailyReward({
 
       {/* When content is completed,  show the 'completed' screen */}
       {!available && (
-        <BlurView
-          className="absolute inset-0 flex-row items-center justify-center gap-2 overflow-hidden rounded-xl bg-white/25"
-          intensity={25}
-        >
+        <BlurView intensity={25} className={overlayClasses}>
           <Icon icon="Wallo.CheckmarkFilled" color={colors.indigo[500]} />
           <Text className="font-medium text-indigo-500">Completed</Text>
         </BlurView>
