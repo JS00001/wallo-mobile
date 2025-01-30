@@ -6,7 +6,7 @@ export enum QuestionType {
 }
 
 /**
- * All internal fields stored about a lesson
+ * All fields stored about a lesson
  */
 export interface ILesson {
   /** SYSTEM DATA */
@@ -44,4 +44,18 @@ export interface ILesson {
   createdAt: Date;
   /** The date the lesson was last updated */
   updatedAt: Date;
+}
+
+/**
+ * The lesson once populated and aggregated for a user
+ */
+export interface IPopulatedLesson extends ILesson {
+  /** Whether the user has completed the lesson */
+  completed: boolean;
+  /** Whether the lesson is locked from starting */
+  locked: boolean;
+  /** The progress of the user in that lesson */
+  progress: number;
+  /** The total progress possible in that lesson */
+  total: number;
 }

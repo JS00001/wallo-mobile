@@ -1,4 +1,9 @@
-import { GetCourseCatalogResponse, GetCoursesResponse } from '@/@types';
+import {
+  GetCourseCatalogResponse,
+  GetCourseRequest,
+  GetCourseResponse,
+  GetCoursesResponse,
+} from '@/@types';
 
 import axios from '@/lib/axios';
 
@@ -12,6 +17,18 @@ export const getCourses = async () => {
   const url = `${PREFIX}`;
 
   const response = await axios.get<GetCoursesResponse>(url);
+
+  return response.data;
+};
+
+/**
+ * Request:     GET /api/v1/courses/:id
+ * Description: Get a course by its id
+ */
+export const getCourse = async (data: GetCourseRequest) => {
+  const url = `${PREFIX}/${data.id}`;
+
+  const response = await axios.get<GetCourseResponse>(url);
 
   return response.data;
 };

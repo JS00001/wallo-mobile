@@ -19,3 +19,8 @@ export interface ClaimRewardRequest {
   /** The type of the reward */
   type: Reward;
 }
+
+export interface GetCourseRequest {
+  /** The id of the course */
+  id: string;
+}

@@ -1,5 +1,5 @@
 import { API } from '.';
-import { IUser, ICourse, IPopulatedCourse } from '..';
+import { IUser, ICourse, IPopulatedCourse, IPopulatedLesson } from '..';
 
 export type LogoutResponse = API.Response;
 
@@ -35,6 +35,13 @@ export type GetCourseCatalogResponse = API.Response<{
 export type GetCoursesResponse = API.Response<{
   /** The courses the user has access to */
   courses: IPopulatedCourse[];
+}>;
+
+export type GetCourseResponse = API.Response<{
+  /** The course */
+  course: ICourse;
+  /** The lessons in the course */
+  lessons: IPopulatedLesson[];
 }>;
 
 export type ClaimRewardResponse = API.Response<{
