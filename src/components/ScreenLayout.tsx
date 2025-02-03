@@ -29,10 +29,10 @@ export default function ScreenLayout({
   contentContainerClassName,
   children,
 }: Props) {
-  const viewClasses = classNames("overflow-visible px-6 pt-4", className);
+  const viewClasses = classNames("overflow-visible px-6 pt-6", className);
 
   const contentContainerClasses = classNames(
-    "gap-6 pb-24",
+    "gap-4 pb-24",
     contentContainerClassName,
   );
 
@@ -49,9 +49,16 @@ export default function ScreenLayout({
 
           {/* Header */}
           <View className="flex-row items-center justify-between pb-6">
-            <Text size="4xl" className="font-semibold text-white">
-              {title}
-            </Text>
+            <View>
+              <Text size="4xl" className="font-semibold text-white">
+                {title}
+              </Text>
+              {description && (
+                <Text size="lg" className="text-gray-300">
+                  {description}
+                </Text>
+              )}
+            </View>
 
             <View className="flex-row items-center gap-2">
               {showStreak && <StreakCount />}

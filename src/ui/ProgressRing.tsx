@@ -97,7 +97,7 @@ const CircularProgress: React.FC<Props> = ({
       </Svg>
 
       <View className="absolute items-center justify-center">
-        <Icon size={32} color={color} icon={icon} />
+        <Icon size={32} icon={icon} />
       </View>
     </View>
   );

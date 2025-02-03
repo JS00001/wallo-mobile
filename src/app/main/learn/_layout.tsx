@@ -5,15 +5,16 @@ interface LayoutProps {}
 const Layout: React.FC<LayoutProps> = () => {
   return (
     <Stack
+      initialRouteName="index"
       screenOptions={{
         headerShown: false,
         contentStyle: { backgroundColor: "white" },
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="[module]/home" />
-      <Stack.Screen name="[module]/lesson" />
-      <Stack.Screen name="[module]/quiz" />
+      <Stack.Screen name="[courseId]/home" />
+      <Stack.Screen name="[courseId]/lesson" />
+      <Stack.Screen name="[courseId]/quiz" />
     </Stack>
   );
 };

@@ -18,6 +18,7 @@ export const Wallo = {
   Gem: require('./wallo-icons/Gem').default,
   Heart: require('./wallo-icons/Heart').default,
   Home: require('./wallo-icons/Home').default,
+  Lock: require('./wallo-icons/Lock').default,
   MoneyBag: require('./wallo-icons/MoneyBag').default,
   Shop: require('./wallo-icons/Shop').default,
   Trophy: require('./wallo-icons/Trophy').default,
