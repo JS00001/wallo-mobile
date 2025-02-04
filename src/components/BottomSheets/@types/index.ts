@@ -15,5 +15,6 @@ export type IndividualSheetData<T extends IndividualSheetName> = {
 export interface IndividualSheetProps {
   GEMS: undefined;
   LIVES: undefined;
+  NETWORK_LOGGER: undefined;
   STREAK: undefined;
 }

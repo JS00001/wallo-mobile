@@ -9,6 +9,7 @@ Wallo is a financial education platform that allows users to learn about persona
 - [Running the application](#running-the-application)
 - [Architecture](#architecture)
   - [Managing Server State](#managing-server-state)
+- [Debugging](#debugging)
 
 ## Setting up the environment
 
@@ -49,3 +50,9 @@ All async state should be handled via Tanstack Query. Every API query and mutati
 Relevant optimistic updates or cache updates (when mutating data) should be handled in the hooks.
 
 Every component using a query should validate `isLoading`, `isError`, and `data` states to handle the UI accordingly.
+
+## Debugging
+
+To help with debugging, we've added debugging tools to the application when running in development mode.
+
+- **Network Requests**: To view network requests, press three fingers on the screen to open the network inspector.

@@ -5,6 +5,7 @@ import { IndividualSheetName } from "./@types";
 import GemsSheet from "./Gems";
 import LivesSheet from "./Lives";
 import StreakSheet from "./Streak";
+import NetworkLoggerSheet from "./DevTools/NetworkLogger";
 
 import useBottomSheetStore from "@/store/bottom-sheets";
 
@@ -15,6 +16,7 @@ const BottomSheets: Record<IndividualSheetName, React.FC<any>> = {
   GEMS: GemsSheet,
   LIVES: LivesSheet,
   STREAK: StreakSheet,
+  NETWORK_LOGGER: NetworkLoggerSheet,
 };
 
 /**

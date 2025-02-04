@@ -10,7 +10,7 @@ export default function Layout() {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="[courseId]" />
+      <Stack.Screen name="[courseId]/index" />
       <Stack.Screen
         name="[courseId]/[lessonId]"
         options={{
