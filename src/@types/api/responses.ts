@@ -1,5 +1,12 @@
 import { API } from '.';
-import { IUser, ICourse, IPopulatedCourse, IPopulatedLesson } from '..';
+import {
+  IUser,
+  ICourse,
+  IPopulatedCourse,
+  IPopulatedLesson,
+  ILesson,
+  ILessonProgress,
+} from '..';
 
 export type LogoutResponse = API.Response;
 
@@ -49,4 +56,11 @@ export type ClaimRewardResponse = API.Response<{
   user: IUser;
   /** The amount of virtual currency the user received */
   virtualCurrency: number;
+}>;
+
+export type GetLessonResponse = API.Response<{
+  /** The lesson */
+  lesson: ILesson;
+  /** The user's progress on the lesson */
+  progress: ILessonProgress;
 }>;

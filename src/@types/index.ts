@@ -4,4 +4,5 @@ export * from './api/responses';
 
 export * from './models/course';
 export * from './models/lesson';
+export * from './models/lesson-progress';
 export * from './models/user';

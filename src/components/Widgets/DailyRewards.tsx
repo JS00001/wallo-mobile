@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import classNames from "classnames";
 import { router } from "expo-router";
 import { BlurView } from "expo-blur";
 import colors from "tailwindcss/colors";
@@ -11,7 +12,6 @@ import Pressable from "@/ui/Pressable";
 import useAuthStore from "@/store/auth";
 import { IconType } from "@/assets/icons";
 import ProgressBar from "@/ui/ProgressBar";
-import classNames from "classnames";
 
 interface Props {}
 
@@ -152,9 +152,15 @@ function DailyReward({
 
       {/* When content is completed,  show the 'completed' screen */}
       {!available && (
-        <BlurView intensity={25} className={overlayClasses}>
-          <Icon icon="Wallo.CheckmarkFilled" color={colors.indigo[500]} />
-          <Text className="font-medium text-indigo-500">Completed</Text>
+        <BlurView intensity={50} className={overlayClasses}>
+          <Icon
+            size={28}
+            icon="Wallo.CheckmarkFilled"
+            color={colors.green[500]}
+          />
+          <Text size="lg" className="font-medium text-green-500">
+            Completed
+          </Text>
         </BlurView>
       )}
     </Pressable>

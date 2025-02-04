@@ -2,8 +2,8 @@ import { useMutation } from '@tanstack/react-query';
 
 import { GET_USER_KEY } from '../keys';
 
+import { claimReward } from '@/api';
 import queryClient from '@/lib/query-client';
-import { claimReward } from '@/api/requests/rewards';
 import { ClaimRewardRequest } from '@/@types';
 
 export const useClaimDailyReward = () => {

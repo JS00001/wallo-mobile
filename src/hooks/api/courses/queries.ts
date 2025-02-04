@@ -6,11 +6,7 @@ import {
   GET_COURSES_KEY,
 } from '../keys';
 
-import {
-  getCourse,
-  getCourseCatalog,
-  getCourses,
-} from '@/api/requests/courses';
+import { getCourse, getCourseCatalog, getCourses } from '@/api';
 
 export const useGetCourses = () => {
   return useQuery({

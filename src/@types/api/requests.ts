@@ -24,3 +24,8 @@ export interface GetCourseRequest {
   /** The id of the course */
   id: string;
 }
+
+export interface GetLessonRequest {
+  /** The id of the lesson */
+  id: string;
+}

@@ -21,9 +21,9 @@ const CircularProgress: React.FC<Props> = ({
 }) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
 
-  const size = 100;
+  const size = 80;
   const innerStrokeWidth = 3;
-  const outerStrokeWidth = 12;
+  const outerStrokeWidth = 10;
   const percentage = (progress / total) * 100;
 
   const innerRadius = (size - outerStrokeWidth + 2) / 2;
@@ -44,7 +44,7 @@ const CircularProgress: React.FC<Props> = ({
 
   useEffect(() => {
     animateProgress(percentage);
-  }, [percentage]);
+  }, [progress, total]);
 
   const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
@@ -97,7 +97,7 @@ const CircularProgress: React.FC<Props> = ({
       </Svg>
 
       <View className="absolute items-center justify-center">
-        <Icon size={32} icon={icon} />
+        <Icon size={28} icon={icon} />
       </View>
     </View>
   );

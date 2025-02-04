@@ -1,11 +1,12 @@
-import ScreenLayout from "@/components/ScreenLayout";
-import { useGetCourse } from "@/hooks/api/courses";
-import ProgressRing from "@/ui/ProgressRing";
-import { useLocalSearchParams } from "expo-router";
 import { View } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+
 import Text from "@/ui/Text";
-import { IPopulatedLesson } from "@/@types";
 import { IconType } from "@/assets/icons";
+import { IPopulatedLesson } from "@/@types";
+import ProgressRing from "@/ui/ProgressRing";
+import { useGetCourse } from "@/hooks/api/courses";
+import ScreenLayout from "@/components/ScreenLayout";
 
 export default function ModuleHome() {
   const { courseId } = useLocalSearchParams();
