@@ -15,7 +15,7 @@ export default function Course({ course }: Props) {
   const onPress = async () => {
     router.push(
       {
-        pathname: "/main/learn/[courseId]/home",
+        pathname: "/main/learn/[courseId]",
         params: { courseId: course._id },
       },
       { withAnchor: true },

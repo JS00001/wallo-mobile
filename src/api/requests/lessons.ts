@@ -2,7 +2,7 @@ import { GetLessonRequest, GetLessonResponse } from '@/@types';
 
 import axios from '@/lib/axios';
 
-const PREFIX = '/courses';
+const PREFIX = '/lessons';
 
 /**
  * Request:     GET /api/v1/lessons/:id

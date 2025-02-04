@@ -1,8 +1,6 @@
 import { Stack } from "expo-router";
 
-interface LayoutProps {}
-
-const Layout: React.FC<LayoutProps> = () => {
+export default function Layout() {
   return (
     <Stack
       initialRouteName="index"
@@ -12,11 +10,15 @@ const Layout: React.FC<LayoutProps> = () => {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="[courseId]/home" />
-      <Stack.Screen name="[courseId]/lesson" />
-      <Stack.Screen name="[courseId]/quiz" />
+      <Stack.Screen name="[courseId]" />
+      <Stack.Screen
+        name="[courseId]/[lessonId]"
+        options={{
+          gestureEnabled: false,
+          presentation: "transparentModal",
+          animation: "slide_from_bottom",
+        }}
+      />
     </Stack>
   );
-};
-
-export default Layout;
+}

@@ -1,5 +1,6 @@
-import { View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useMemo } from "react";
+import { TouchableOpacity, View } from "react-native";
+import { router, useLocalSearchParams } from "expo-router";
 
 import Text from "@/ui/Text";
 import { IconType } from "@/assets/icons";
@@ -44,14 +45,30 @@ export default function ModuleHome() {
 }
 
 function Lesson({ lesson }: { lesson: IPopulatedLesson }) {
-  const icon: IconType = (() => {
+  const icon: IconType = useMemo(() => {
     if (lesson.completed) return "Wallo.CheckmarkFilled";
     if (lesson.locked) return "Wallo.Lock";
     return "Wallo.Book";
-  })();
+  }, [lesson]);
+
+  const disabled = lesson.locked || lesson.completed;
+
+  const onPress = () => {
+    router.push({
+      pathname: "/main/learn/[courseId]/[lessonId]",
+      params: {
+        courseId: lesson.course,
+        lessonId: lesson._id,
+      },
+    });
+  };
 
   return (
-    <View className="flex-1 items-center">
+    <TouchableOpacity
+      className="flex-1 items-center"
+      disabled={disabled}
+      onPress={onPress}
+    >
       <ProgressRing
         icon={icon}
         progress={lesson.progress}
@@ -64,6 +81,6 @@ function Lesson({ lesson }: { lesson: IPopulatedLesson }) {
       <Text size="xs" className="text-center text-gray-500">
         {lesson.description}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }

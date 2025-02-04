@@ -38,7 +38,7 @@ export default function AppleOAuthButton() {
         return fullNameObj as AppleAuthentication.AppleAuthenticationFullName | null;
       })();
 
-      const res = await mutation.mutateAsync({
+      await mutation.mutateAsync({
         fullName,
         identityToken: credential.identityToken!,
       });
