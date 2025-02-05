@@ -1,8 +1,8 @@
 import { Redirect, Slot } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import useAuthStore from "@/store/auth";
 import ProgressBar from "@/ui/ProgressBar";
+import SafeAreaView from "@/ui/SafeAreaView";
 import useOnboardingStore, { OnboardingScreen } from "@/store/onboarding";
 
 /**

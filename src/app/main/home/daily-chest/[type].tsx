@@ -8,12 +8,12 @@ import { useRef, useState } from "react";
 import LottieView from "lottie-react-native";
 import { Pressable, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 import Text from "@/ui/Text";
 import { Reward } from "@/@types";
 import IconButton from "@/ui/IconButton";
 import useBounce from "@/hooks/useBounce";
+import SafeAreaView from "@/ui/SafeAreaView";
 import GemCount from "@/components/Statistics/GemCount";
 import { useClaimDailyReward } from "@/hooks/api/rewards";
 import RewardBackgroundSvg from "@/assets/RewardBackgroundSvg";
