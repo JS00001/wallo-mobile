@@ -10,6 +10,7 @@ import GemCount from "@/components/Statistics/GemCount";
 import LiveCount from "@/components/Statistics/LiveCount";
 import Text from "@/ui/Text";
 import { useRef } from "react";
+import ContentSwiper from "@/components/ContentSwiper";
 
 export default function Lesson() {
   const ref = useRef(null);
@@ -39,7 +40,9 @@ export default function Lesson() {
         <ProgressBar hideLabel progress={userProgress} total={totalProgress} />
       </View>
 
-      <View className="relative flex-1">
+      <ContentSwiper data={[...lesson.content]} />
+
+      {/* <View className="relative flex-1">
         <Swiper
           ref={ref}
           disableTopSwipe
@@ -66,7 +69,7 @@ export default function Lesson() {
             </>
           )}
         />
-      </View>
+      </View> */}
 
       {/* <Text size="xl" className="font-semibold text-gray-800">
         Which of the following is the answer to the question being asked here?
