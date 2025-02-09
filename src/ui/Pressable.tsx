@@ -4,10 +4,18 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import classNames from "classnames";
-import { PressableProps, Pressable as RNPressable, View } from "react-native";
+import * as Haptic from "expo-haptics";
+import colors from "tailwindcss/colors";
+import {
+  PressableProps,
+  Pressable as RNPressable,
+  View,
+  ViewStyle,
+} from "react-native";
 
 interface Props extends Omit<PressableProps, "children"> {
   children: React.ReactNode;
+  accent?: string;
   size?: keyof typeof PressableSizeOffsets;
 }
 
@@ -20,6 +28,7 @@ const PressableSizeOffsets = {
 export default function Pressable({
   className,
   children,
+  accent = colors.gray[300],
   size = "md",
   ...props
 }: Props) {
@@ -32,15 +41,23 @@ export default function Pressable({
     marginTop: BUTTON_ANIMATION_OFFSET - offset.value,
   }));
 
-  const shadowClasses = classNames("border-2 border-gray-300", "bg-gray-300");
+  const shadowStyles = {
+    borderWidth: 2,
+    borderColor: accent,
+    backgroundColor: accent,
+  };
 
-  const containerClasses = classNames("bg-white rounded-xl", className);
+  const containerClasses = classNames(
+    "bg-white rounded-xl overflow-hidden",
+    className,
+  );
 
   /**
    * When the button is pressed in and out, animate the button to make it look
    * like it's being pressed "in" and "out".
    */
   const onPressIn = () => {
+    Haptic.impactAsync(Haptic.ImpactFeedbackStyle.Medium);
     offset.value = withSpring(0, { duration: 300 });
   };
 
@@ -50,7 +67,7 @@ export default function Pressable({
 
   return (
     <RNPressable onPressIn={onPressIn} onPressOut={onPressOut} {...props}>
-      <Animated.View style={[animatedStyles]} className={shadowClasses}>
+      <Animated.View style={[animatedStyles, shadowStyles]}>
         <View className={containerClasses}>{children}</View>
       </Animated.View>
     </RNPressable>
